@@ -28,7 +28,7 @@ class FriendsTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
   }
-
+  
   // MARK: Table view functions
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,39 +40,16 @@ class FriendsTableViewController: UITableViewController {
     
     let friend = friendArray[indexPath.row]
     
-    // Populate each cell with friend's data
-    cell.nameLabel.text = friend.name
-    cell.moodDescriptionLabel.text = Friend.getDescription(mood: friend.mood)
-    cell.moodButton.setTitle(friend.mood.rawValue, for: .normal)
+    cell.friend = friend
     
-    // Add target to the mood button to trigger updateMood function
-    cell.moodButton.addTarget(self, action: #selector(FriendsTableViewController.updateMood), for: .touchUpInside)
-    
-    // Set button's tag to the index for later reference
-    cell.moodButton.tag = indexPath.row
+    cell.friendsTableViewController = self
     
     return cell
   }
   
-  func updateMood(sender: UIButton) {
-    let friendToUpdate = friendArray[sender.tag]
-    
-    // Get current mood.
-    let mood = friendToUpdate.mood
-    var nextMood: Mood!
-    
-    // Get next mood based on the previous one.
-    switch mood {
-    case .happy:
-      nextMood = Mood.medium
-    case .medium:
-      nextMood = Mood.angry
-    case .angry:
-      nextMood = Mood.happy
-    }
-    
-    //Update the model.
-    friendToUpdate.mood = nextMood
+  func updateMood(friendToUpdate: Friend) {
+    // Update mood with helper method
+    friendToUpdate.mood = friendToUpdate.getNextMood()
     
     //update the view.
     tableView.reloadData()
@@ -84,5 +61,5 @@ class FriendsTableViewController: UITableViewController {
       addFriendViewController.friendsTableViewController = self
     }
   }
-
+  
 }

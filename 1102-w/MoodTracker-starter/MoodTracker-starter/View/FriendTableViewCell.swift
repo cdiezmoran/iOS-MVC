@@ -14,15 +14,18 @@ class FriendTableViewCell: UITableViewCell {
   @IBOutlet weak var moodDescriptionLabel: UILabel!
   @IBOutlet weak var moodButton: UIButton!
   
-  var friend: Friend? // stores the friend that is displayed in this cell
+  var friendsTableViewController: FriendsTableViewController!
+  
+  var friend: Friend? { // stores the friend that is displayed in this cell
+    didSet {
+      nameLabel.text = friend?.name
+      moodDescriptionLabel.text = friend?.getDescription()
+      moodButton.setTitle(friend?.mood.rawValue, for: .normal)
+    }
+  }
   
   @IBAction func moodButtonPressed(_ sender: UIButton) {
-    print(#line, #function)
+    friendsTableViewController.updateMood(friendToUpdate: friend!)
   }
-
-
-  
-
-  
   
 }

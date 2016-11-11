@@ -117,7 +117,7 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3J3-mB-rYw">
                                 <segments>
                                     <segment title="Good 😁"/>
-                                    <segment title="Medium 😑"/>
+                                    <segment title="Medium 😐"/>
                                     <segment title="Bad 😡"/>
                                 </segments>
                             </segmentedControl>

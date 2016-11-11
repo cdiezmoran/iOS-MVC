@@ -16,7 +16,7 @@ class AddFriendViewController: UIViewController {
   @IBOutlet weak var moodSelector: UISegmentedControl!
   
   
-  //Mark: Properties
+  //MARK: Properties
   
   var friendsTableViewController: FriendsTableViewController!
   
@@ -31,8 +31,6 @@ class AddFriendViewController: UIViewController {
   // MARK: Actions
   
   @IBAction func saveButtonPressed(_ sender: AnyObject) {
-    // TODO: save the added friend here
-    
     let name = friendNameField.text
     let mood: Mood!
     

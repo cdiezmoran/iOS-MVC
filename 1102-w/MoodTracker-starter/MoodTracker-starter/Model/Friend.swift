@@ -7,9 +7,9 @@
 //
 
 enum Mood: String {
-    case happy = "😁"
-    case medium = "😐"
-    case angry = "😤"
+  case happy = "😁"
+  case medium = "😐"
+  case angry = "😡"
 }
 
 class Friend {
@@ -21,16 +21,31 @@ class Friend {
     self.name = name
     self.mood = mood
   }
-    
-    static func getDescription(mood: Mood) -> String {
-        switch mood {
-        case .happy:
-            return "Great day!"
-        case .medium:
-            return "Meh."
-        case .angry:
-            return "Get off my lawn!!!"
-        }
+  
+  func getDescription() -> String {
+    switch self.mood {
+    case .happy:
+      return "Great day!"
+    case .medium:
+      return "Meh."
+    case .angry:
+      return "Get off my lawn!!!"
     }
+  }
+  
+  func getNextMood() -> Mood {
+    var nextMood: Mood!
+    
+    switch self.mood {
+    case .happy:
+      nextMood = Mood.medium
+    case .medium:
+      nextMood = Mood.angry
+    case .angry:
+      nextMood = Mood.happy
+    }
+    
+    return nextMood
+  }
   
 }
