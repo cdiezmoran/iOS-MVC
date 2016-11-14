@@ -42,11 +42,27 @@ class FriendsTableViewController: UITableViewController {
     
     cell.friend = friend
     
-    cell.friendsTableViewController = self
+    cell.delegate = self
     
     return cell
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "addFriend" {
+      let addFriendViewController = segue.destination as! AddFriendViewController
+      addFriendViewController.delegate = self
+    }
+  }
+  
+}
+
+extension FriendsTableViewController: AddFriendDelegate {
+  func addFriend(friend: Friend) {
+    friendArray.append(friend)
+  }
+}
+
+extension FriendsTableViewController: UpdateMoodDelegate {
   func updateMood(friendToUpdate: Friend) {
     // Update mood with helper method
     friendToUpdate.mood = friendToUpdate.getNextMood()
@@ -54,12 +70,4 @@ class FriendsTableViewController: UITableViewController {
     //update the view.
     tableView.reloadData()
   }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "addFriend" {
-      let addFriendViewController = segue.destination as! AddFriendViewController
-      addFriendViewController.friendsTableViewController = self
-    }
-  }
-  
 }

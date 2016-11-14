@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AddFriendDelegate: class {
+  func addFriend(friend: Friend)
+}
+
 class AddFriendViewController: UIViewController {
   
   // MARK: Outlets
@@ -18,7 +22,7 @@ class AddFriendViewController: UIViewController {
   
   //MARK: Properties
   
-  var friendsTableViewController: FriendsTableViewController!
+  weak var delegate: AddFriendDelegate?
   
   
   // MARK: View Controller Lifecycle
@@ -34,6 +38,10 @@ class AddFriendViewController: UIViewController {
     let name = friendNameField.text
     let mood: Mood!
     
+    if name == nil || name == "" {
+      return
+    }
+    
     switch moodSelector.selectedSegmentIndex {
     case 0: mood = .happy
     case 1: mood = .medium
@@ -43,7 +51,7 @@ class AddFriendViewController: UIViewController {
     
     let newFriend = Friend(name: name!, mood: mood)
     
-    friendsTableViewController.friendArray.append(newFriend)
+    delegate?.addFriend(friend: newFriend)
     
     dismissViewController()
   }
