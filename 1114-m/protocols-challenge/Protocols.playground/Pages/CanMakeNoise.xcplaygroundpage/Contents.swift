@@ -6,6 +6,7 @@ protocol CanMakeNoise {
   func makeNoise()
 }
 
+<<<<<<< HEAD
 class Human: CanMakeNoise {
   func makeNoise() {
     print("How did trump win")
@@ -22,13 +23,29 @@ class Cow: CanMakeNoise {
   func makeNoise() {
     print("moo")
   }
+=======
+class Human {
+  
+}
+
+class Pig {
+  
+}
+
+class Cow {
+  
+>>>>>>> 89d0025222eb032d967e4b94b0abe49862a3ceca
 }
 
 let human = Human()
 let pig = Pig()
 let cow = Cow()
 
+<<<<<<< HEAD
 let arrayOfNoiseMaker: [CanMakeNoise] = [human, pig, cow]
+=======
+// let arrayOfNoiseMaker: [CanMakeNoise] = [human, pig, cow]
+>>>>>>> 89d0025222eb032d967e4b94b0abe49862a3ceca
 
 /*:
  **Tasks**:
@@ -36,6 +53,9 @@ let arrayOfNoiseMaker: [CanMakeNoise] = [human, pig, cow]
  2. Iterate over `arrayOfNoiseMaker` and let each object make their noise
  */
 
+<<<<<<< HEAD
 for noiseMaker in arrayOfNoiseMaker {
   noiseMaker.makeNoise()
 }
+=======
+>>>>>>> 89d0025222eb032d967e4b94b0abe49862a3ceca
